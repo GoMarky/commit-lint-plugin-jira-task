@@ -1,6 +1,6 @@
 {
   "name": "@gomarky/commitlint-plugin-jira-task",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "index.js",
   "repository": "https://github.com/GoMarky/commitlint-plugin-jira-task",
   "license": "MIT",
@@ -9,7 +9,17 @@
     "commitlintplugin"
   ],
   "scripts": {
-    "test": "jest"
+    "dist": "yarn run lint && yarn run dist:build",
+    "dist:build": "yarn run dist:clean && tsc -p tsconfig-dist.json",
+    "dist:clean": "rimraf dist",
+    "lint": "eslint source/**/*.ts tests/**/*.ts",
+    "prepublishOnly": "yarn run test && yarn run dist",
+    "prettier": "prettier --write \"./{src,tests}/**/*.{js,json,ts,tsx}\"",
+    "prettier:ci": "prettier --check \"./{src,tests}/**/*.{js,json,ts,tsx}\"",
+    "test": "yarn run test:rules && yarn run test:specs",
+    "test:debug": "mocha -r ts-node/register -t 5000 tests/rules/no-redundant-notify.ts",
+    "test:rules": "mocha -r ts-node/register -t 5000 tests/rules/*.ts",
+    "test:specs": "mocha -r ts-node/register tests/*-spec.ts"
   },
   "private": false,
   "publishConfig": {

@@ -1,4 +1,35 @@
-const RegexParser = require('regex-parser');
+"use strict";
+
+/**
+ * RegexParser
+ * Parses a string input.
+ *
+ * @author https://www.npmjs.com/package/regex-parser
+ *
+ * @name RegexParser
+ * @function
+ * @param {String} input The string input that should be parsed as regular
+ * expression.
+ * @return {RegExp} The parsed regular expression.
+ */
+var RegexParser = function (input) {
+
+  // Validate input
+  if (typeof input !== "string") {
+    throw new Error("Invalid input. Input must be a string");
+  }
+
+  // Parse input
+  var m = input.match(/(\/?)(.+)\1([a-z]*)/i);
+
+  // Invalid flags
+  if (m[3] && !/^(?!.*?(.).*?\1)[gmixXsuUAJ]+$/.test(m[3])) {
+    return RegExp(input);
+  }
+
+  // Create the regular expression
+  return new RegExp(m[2], m[3]);
+};
 
 module.exports = function (parsed, when, value) {
   const { type, header } = parsed;
