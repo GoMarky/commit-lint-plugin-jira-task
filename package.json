@@ -1,0 +1,18 @@
+{
+    "name": "@gomarky/commitlint-plugin-jira-task",
+    "version": "0.0.1",
+    "main": "index.js",
+    "repository": "https://github.com/GoMarky/commitlint-plugin-jira-task",
+    "license": "MIT",
+    "keywords": [
+        "commitlint",
+        "commitlintplugin"
+    ],
+    "scripts": {
+        "test": "jest"
+    },
+    "devDependencies": {
+        "jest": "^24.9.0",
+        "regex-parser": "2.2.11"
+    }
+}
