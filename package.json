@@ -1,6 +1,6 @@
 {
   "name": "@gomarky/commitlint-plugin-jira-task",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "index.js",
   "repository": "https://github.com/GoMarky/commitlint-plugin-jira-task",
   "license": "MIT",
